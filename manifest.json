@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Discord Gateway Inspector",
+  "version": "1.0",
+  "description": "Inflate the Discord gateway's messages",
+  "devtools_page": "devtools/devtools-page.html",
+  "background": {
+    "scripts": [
+      "background_scripts/background.js"
+    ],
+    "persistent": "false"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.discord.com/*"
+      ],
+      "js": [
+        "scripts/intercept.js"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}
