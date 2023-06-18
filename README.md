@@ -19,7 +19,7 @@ so op codes HELLO, RECONNECT, INVALID_SESSION, HEARTBEAT, and HEARTBEAT_ACK will
 Outgoing messages are intercepted by detouring the internal WebSocket's `send` function, so all
 outgoing messages will appear.
 
-The content script responsbile for doing the hooking is always run regardless of whether or not
+The content script responsible for doing the hooking is always run regardless of whether or not
 devtools are open. If this bothers you then disable the extension if you aren't using it.
 
 Sorry for the not-so-nice UI. I don't like frontend 😼
