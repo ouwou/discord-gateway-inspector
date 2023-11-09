@@ -10,6 +10,18 @@
     ],
     "persistent": "false"
   },
+  "permissions": [
+    "declarativeNetRequest"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "headers",
+        "enabled": true,
+        "path": "headers.json"
+      }
+    ]
+  },
   "content_scripts": [
     {
       "matches": [
