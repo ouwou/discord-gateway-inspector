@@ -35,6 +35,7 @@ const OPCODE_MAP = {
     "33": "SPEED_TEST_DELETE",
     "34": "REQUEST_LAST_MESSAGES",
     "35": "SEARCH_RECENT_MEMBERS",
+    "36": "REQUEST_CHANNEL_STATUSES",
 };
 
 function handleLoaded() {
