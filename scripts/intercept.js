@@ -19,9 +19,8 @@ function main() {
     let r = webpackChunkdiscord_app.push([["gateway_intercept"], {}, r => r]);
     if (!r) return;
     let cache = Object.values(r.c);
-    let GatewayConnectionStore = cache.find(m => m?.exports?.Z?.__proto__?.getSocket).exports.Z;
+    let socket = cache.find(m => m?.exports?.socket).exports.socket;
     webpackChunkdiscord_app.pop();
-    let socket = GatewayConnectionStore.getSocket();
     window.discordSocket = socket;
     /*
     Internally, Discord only receives HELLO, RECONNECT, INVALID_SESSION, HEARTBEAT, HEARTBEAT_ACK
