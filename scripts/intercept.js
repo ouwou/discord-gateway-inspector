@@ -16,7 +16,7 @@ function main() {
         }));
     }
 
-    let r = webpackChunkdiscord_app.push([["gateway_intercept"], {}, r => r]);
+    let r; webpackChunkdiscord_app.push([[Symbol()], {}, x => r=x]);
     if (!r) return;
     let cache = Object.values(r.c);
     let socket = cache.find(m => m?.exports?.socket).exports.socket;
