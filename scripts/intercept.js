@@ -17,16 +17,30 @@ function main() {
     }
 
     let r; webpackChunkdiscord_app.push([[Symbol()], {}, x => r=x]);
+    webpackChunkdiscord_app.pop();
     if (!r) return;
     let cache = Object.values(r.c);
-    let socket = cache.find(m => m?.exports?.socket).exports.socket;
-    webpackChunkdiscord_app.pop();
+    let socket;
+
+    for (let m of cache) {
+        try {
+            if (!m.exports || m.exports === window) continue;
+            for (let ex in m.exports) {
+                if (m.exports?.[ex]?.setResumeUrl) {
+                    socket = m.exports[ex];
+                    break;
+                }
+            }
+        } catch {}
+    }
+
     window.discordSocket = socket;
-    /*
-    Internally, Discord only receives HELLO, RECONNECT, INVALID_SESSION, HEARTBEAT, HEARTBEAT_ACK
-    and there's no real need  to worry about inspecting these
-    */
-    socket.on("dispatch", handleDispatch);
+
+    let o_handleDispatch = socket._handleDispatch;
+    socket._handleDispatch = function(e, t, n) {
+        handleDispatch(t, e);
+        return o_handleDispatch.apply(this, arguments);
+    }
 
     function checkOverrideSend() {
         if (socket._sendOverridden) return;
